@@ -5,9 +5,8 @@
 \usepackage{dcolumn}
 \usepackage{tikz-cd}
 
-
 \newcolumntype{2}{D{.}{}{4.0}}
-\title{Solutions: Galois Theory by Tom Leinster}
+\title{Solutions: Real and Complex Analysis by Walter Rudin}
 \author{Hassaan Naeem}
 \date{\today}
 \begin{document}
@@ -16,6 +15,87 @@
 
 \section*{Chapter 1. Abstract Integration}
 \subsection*{Exercise 1}
+Does there exist an infinite $\sigma$-algebra which has only countably many members?
+\\\\
 \textbf{Solution:}
-What
+No. Impossible.
+
+\subsection*{Exercise 2}
+Prove an analog of Theorem 1.8 for $n$ functions.
+\\\\
+\textbf{Solution:}
+We have that $u_1, u_2, ..., u_n$ are real measurable functions on a measurable space.
+\\\\We let $f(x) = (u_1(x), u_2(x), ..., u_n(x))$.
+Since $h = \Phi \circ f$, Theorem 1.7 shows that it is enough to prove measurability of $f$.
+\\\\We let $B = I_1 \times I_2 \times ... \times I_n$. We then have $f(B) = (u_1(I_1), u_2(I_2)), ... , u_n(I_n)$.
+We then have that $f^{-1}(B) = u_1^{-1}(I_1) \cap u_2^{-1}(I_2) \cap ... \cap u_n^{-1}(I_n)$,
+which is measurable by our measurability assumption on $u_1, u_2, ..., u_n$.
+\\\\Every open set $V$ in $I_1 \times I_2 \times ... \times I_n$ is a countable union of such $B$ which we call $B_i$.
+Hence we have that $f^{-1}(V)=f^{-1}(\bigcup\limits_{i=1}^{\infty} B_i) = \bigcup\limits_{i=1}^{\infty} f^{-1}(B_i)$.
+Hence $f^{-1}(V)$ is measurable. $\quad \square$
+
+\subsection*{Exercise 3}
+Prove that if $f$ is a real function on a measurable space $X$ such that $\{ x:f(x) \ge r\}$ is measurable
+for every rational $r$, then $f$ is measurable.
+\\\\
+\textbf{Solution:}
+We know that $f$ is measurable if for every open set $V$ in $\mathcal{O}_{std}$, $f^{-1}(V)$ is measurable set.
+Here $\mathcal{O}_{std}:\{ (a,b): a < x < b \ \forall x \in \mathbb{R} \}$ is the standard topology on $\mathbb{R}$ and is just the collection of all open intervals $(a,b)$.
+We know that $\{x \in X: f(x) \ge q\}$ is a measurable set $ \forall q \in \mathbb{Q}$. Since we know that $\mathbb{Q}$ is a dense subset of $\mathbb{R}$, we can always get arbitrarily close to any $r \in \mathbb{R}$.
+We let $\forall r \in \mathbb{R}, \ (q_n)_{n\in\mathbb{N}}$ be a decreasing sequence in $\mathbb{Q}$ such that $\lim_{n\to\infty} q_n = r$.
+We then have that $\{x \in X: f(x) > r\} = \bigcup_{n=1}^{\infty} \{ x \in X: f(x) > q_n\}$.
+By definition, the right hand side is measurable, hence every $r$ is measurable.
+Hence, for every open interval in $ I \in \mathcal{O}_{std}$, $f^{-1}(I)$ is a measurable set, hence $f$ is measurable.
+
+
+\subsection*{Exercise 4}
+Let $\{a_n\}$ and $\{b_n\}$ be sequences in $[-\infty, \infty]$, and prove the following assertions:
+
+\begin{enumerate}
+    \item[(a)]  \[\limsup_{n\to\infty} (-a_n) = - \liminf_{n\to\infty} a_n \]
+    \item[(b)]  \[\limsup_{n\to\infty} (a_n + b_n) \le \limsup_{n\to\infty} a_n + \limsup_{n\to\infty} b_n \]\\
+    provided none of the sums is of the form $\infty - \infty$.
+    \item[(c)] If $a_n \le b_n$ for all $n$, then 
+        \[ \liminf_{n\to\infty} a_n \le \liminf_{n\to\infty} b_n\]
+\end{enumerate}
+Show by an example that strict inequality can hold for (b).
+\\\\
+\textbf{Solution:}
+
+\subsection*{Exercise 5}
+\\\\
+\textbf{Solution:}
+
+\subsection*{Exercise 6}
+\\\\
+\textbf{Solution:}
+
+\subsection*{Exercise 7}
+\\\\
+\textbf{Solution:}
+
+\subsection*{Exercise 8}
+\\\\
+\textbf{Solution:}
+
+\subsection*{Exercise 9}
+\\\\
+\textbf{Solution:}
+
+\subsection*{Exercise 10}
+\\\\
+\textbf{Solution:}
+
+\subsection*{Exercise 11}
+\\\\
+\textbf{Solution:}
+
+\subsection*{Exercise 12}
+\\\\
+\textbf{Solution:}
+
+\subsection*{Exercise 13}
+\\\\
+\textbf{Solution:}
+
 \end{document}
