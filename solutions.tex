@@ -61,15 +61,94 @@ Let $\{a_n\}$ and $\{b_n\}$ be sequences in $[-\infty, \infty]$, and prove the f
 Show by an example that strict inequality can hold for (b).
 \\\\
 \textbf{Solution:}
-
+\\\\
+a) 
+\begin{equation*}
+    \begin{aligned}
+        \limsup_{n\to\infty} (-a_n) &= \inf_{n\ge0} \sup_{m\ge n} (-a_m)\\
+        &= \inf_{n\ge0} (- \inf_{m\ge n} a_m)\\
+        &= - \sup_{n\ge0} \inf_{m\ge n} a_m\\
+        & = - \liminf_{n\to\infty} (a_n)\\
+    \end{aligned}
+\end{equation*}
+\\
+b)
+We let $a_n = \sup_{m \ge n} a_m$ and $ b_n = \sup_{m \ge n} b_m$.
+It is trivial that $A \subseteq B \implies \sup A \le \sup B$.
+We can then observe that $\forall m \ge n,\ a_n \ge a_m$ and $b_n \ge b_m$. Hence we have that: 
+\begin{equation*}
+    \begin{aligned}
+        a_n + b_n &\ge a_m + b_m \\
+        \sup_{m \ge n} (a_n + b_n) = a_n + b_n &\ge \sup_{m \ge n} (a_m + b_m)\\
+        \lim_{n\to\infty} (a_n + b_n) &\ge \lim_{n\to\infty}\sup_{m \ge n} (a_m + b_m)\\
+        \lim_{n\to\infty} (\sup_{m \ge n} a_m + \sup_{m \ge n} b_m) &\ge \lim_{n\to\infty}\sup_{m \ge n} (a_m + b_m)\\
+        \lim_{n\to\infty}\sup_{m \ge n} a_m + \lim_{n\to\infty}\sup_{m \ge n} b_m &\ge \lim_{n\to\infty}\sup_{m \ge n} (a_m + b_m)\\
+        \limsup_{n\to\infty} a_n + \limsup_{n\to\infty} b_n &\ge \limsup_{n\to\infty}(a_n +b_n) \quad \square   
+    \end{aligned}
+\end{equation*}
+\\
+c)
+We have that $\forall n$:
+\begin{equation*}
+    \begin{aligned}
+        \inf_{m \ge n} a_m &\le \inf_{m \ge n} b_m\\
+    \end{aligned}
+\end{equation*}
+Where for the sequences $(\inf_{m \ge n} a_m)_{n\in\mathbb{N}}$ and $(\inf_{m \ge n} b_m)_{n\in\mathbb{N}}$ we have:
+\begin{equation*}
+    \begin{aligned}
+        \lim_{n\to\infty}\inf_{m \ge n} a_m &\le \lim_{n\to\infty}\inf_{m \ge n} b_m\\
+        \liminf_{n\to\infty} a_n &\le \liminf_{n\to\infty} b_n \quad \square
+    \end{aligned}
+\end{equation*}
 \subsection*{Exercise 5}
+(a) Suppose $f: X \rightarrow [-\infty, \infty]$ and $g:X \rightarrow [-\infty, \infty]$ are measurable. Prove that the sets $ \{ x: f(x) < g(x) \}, \{ x: f(x) = g(x)\}$ are measurable.
+\\\\
+(b) Prove that the set of points at which a sequence of measurable real-valued functions converges
+(to a finite limit) is measurable. 
 \\\\
 \textbf{Solution:}
+\\\\
+a) Since $f$ and $g$ are measurable, from Excercise 3, we can deduce that $\forall q \in \mathbb{Q}, \ \{x:f(x) \ge q\}$ and $\{x:g(x) \ge q\}$ are measurable sets. Hence their complements and strict inequality conditioned sets
+$\{x:f(x) < q\}, \{x:g(x) < q\}, \{x:f(x) > q\}, \{x:g(x) > q\}, \{x:g(x) \le q\}, \{x:g(x) \le q\}$ are also measurable. We then have that $\{x:f(x) < g(x)\}, \{x: f(x) = g(x)\} & \iff \{x:f(x) \le g(x)\} = X$. Then we have:
+\begin{equation*}
+    \begin{aligned}
+        X^C = \{x:f(x) > g(x)\} &= \bigcup\limits_{q\in\mathbb{Q}}\left\{\{x:f(x) > q\} \cap \{x:g(x) < q\} \right\}\\
+            &= \bigcup\limits_{q\in\mathbb{Q}}\left\{\{x:f(x) \le q\} \cup \{x:g(x) \ge q\} \right\}
+    \end{aligned}
+\end{equation*}
+which measurable since it is the union of countably many measurable sets. 
+Hence we have that $(X^C)^C = X$ is measurable.
+\\\\
+b) If we have a sequence of real-valued measurable functions $(f_n)_{n\in\mathbb{N}}$ which converge to a finite limit say $a$,
+we know that:
+\[ \lim_{n\to\infty} f_n = a \iff \liminf_{n\to\infty} f_n = \limsup_{n\to\infty} f_n = a \]
+By \textbf{Theorem 1.14} we know that $h = \limsup_{n\to\infty}f_n$ and $g = \sup_{n\ge 1} f_n$ are measurable.
+From these it follows that $\inf_{n\ge1}f_n$ and $\liminf_{n\to\infty}f_n$ are measurable.
+Then we have that $\{ x: \liminf_{n\to\infty} f_n = \limsup_{n\to\infty} \} = X$ and:
+\begin{equation*}
+    \begin{aligned}
+        X^C = \{ x: \liminf_{n\to\infty} f_n > \limsup_{n\to\infty} \} \cup \{ x: \liminf_{n\to\infty} f_n < \limsup_{n\to\infty} \}\\
+    \end{aligned}
+\end{equation*}
+which we know by (a) to be measurable. Hence $X$ is measurable.
 
 \subsection*{Exercise 6}
+Let $X$ be an uncountable set, let $\mathfrak{M}$ be the collection of all sets $E \subset X$ such that
+such that either $E$ or $E^C$ is at most countable, and define $\mu(E) = 0$ in the first case, $\mu(E)=1$ in the
+second. Prove that $\mathfrak{M}$ is a $\sigma$-algebra in $X$ and that $\mu$ is a measure on $\mathfrak{M}$. Describe
+the corresponding measurable functions and their integrals.
 \\\\
 \textbf{Solution:}
-
+By defintion $X,  \emptyset \in \mathfrak{M}$. Additionally if $E \in \mathfrak{M}$, then $E^C \in \mathfrak{M}$.
+We then let $E = \cup_{i=1}^{\infty} E_i$ where $E_i \in \mathfrak{M}$. If all $E_i$ are countable then we have that $E$ is
+also countable, since a countable union of countable sets is countable, hence $E \in \mathfrak{M}$. If $\exists E_{i_u}$ such that $E_{i_u}^C$ is countable,
+then $E^C = \cap_{i=1}^{\infty}E_i^C \subseteq E_{i_u}^C$, and hence $E^C$ is countable, hence $E \in \mathfrak{M}$. Hence $\mathfrak{M}$ is a $\sigma$-algebra in $X$.
+\\\\
+We then look at $\mu$. We let $E = \cup_{i=1}^{\infty}E_i$ be a countable collection of pairwise disjoint sets $E_i \in \mathfrak{M}$. Similar to before
+if all $E_{i}$ are countable then $E$ is countable and hence $\Sigma_{i=1}^{\infty}\mu(E_i) = \Sigma_{i=1}^{\infty} 0 = 0= \mu(E)$.
+If $\exists E_{i_{k}}$ such that $E_{i_{k}}^C$ is countable, then $E^C$ is countable. Hence $\Sigma_{i=1}^{\infty}\mu(E_i) = \Sigma_{i=1, i \neq i_k}^{\infty} \mu(E_i) + \mu(E_{i_k}) = \Sigma_{i=1}^{\infty}0 + 1 = 1 = \mu(E)$.
+Hence we have that $\mu(\cup_{i=1}^{\infty}E_i) = \Sigma_{i=1}^{\infty}\mu(E_i)$. Hence $\mu$ is a measure on $\mathfrak{M}$.
 \subsection*{Exercise 7}
 \\\\
 \textbf{Solution:}
