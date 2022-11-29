@@ -149,32 +149,111 @@ We then look at $\mu$. We let $E = \cup_{i=1}^{\infty}E_i$ be a countable collec
 if all $E_{i}$ are countable then $E$ is countable and hence $\Sigma_{i=1}^{\infty}\mu(E_i) = \Sigma_{i=1}^{\infty} 0 = 0= \mu(E)$.
 If $\exists E_{i_{k}}$ such that $E_{i_{k}}^C$ is countable, then $E^C$ is countable. Hence $\Sigma_{i=1}^{\infty}\mu(E_i) = \Sigma_{i=1, i \neq i_k}^{\infty} \mu(E_i) + \mu(E_{i_k}) = \Sigma_{i=1}^{\infty}0 + 1 = 1 = \mu(E)$.
 Hence we have that $\mu(\cup_{i=1}^{\infty}E_i) = \Sigma_{i=1}^{\infty}\mu(E_i)$. Hence $\mu$ is a measure on $\mathfrak{M}$.
+\\\\
+Let $f: X \rightarrow R$, where $R$ is an arbitrary range. We know that if $f$ is measurable then either $f^{-1}(x)$ or $(f^{-1}(x))^C$ is measurable and hence countable.
+If we have that $(f^{-1}(x))^C$ is countable then by the measure $\mu$ that we have $f(x)$ is almost constant.
+
 \subsection*{Exercise 7}
+Suppose $f_n:X \to [0, \infty]$ is measurable for $n=1,2,3,..., f_1 \ge f_2 \ge f_3 \ge ... \ge 0, \ f_n(x) \to f(x)$ as $n \to \infty$,
+for every $x \in X$, and $f_1 \in L^1(\mu)$. Prove that then
+\[ \lim_{n\to\infty} \int_X f_n \,d\mu = \int_X f \,d\mu \]
+and show that this conclusion does \textit{not} follow if the condition ``$ f_1 \in L^1(\mu)$'' is omitted.
 \\\\
 \textbf{Solution:}
+If $\forall x \in X, \ f_1(x) < \infty $.
+We have that $\lim_{n\to\infty}f_n(x) = f(x)$ where each $f_n$ is measurable on $X$. We also have that $f_1(x) \ge f_n(x) \ge 0$ hence $|f_n(x)| \le f_1(x) \in L^1(\mu)$.
+By Lebesgue's Dominated Convergence Theorem (LDCT), the conclusion then follows.
+\\\\ 
+Else we can let $E = \{ x \in X : f_1(x) = \infty\}$. If we assume that $\mu(E) > 0$, then we also have that $\int_X|f_1|d\mu = \infty$, but since $f_1 \in L^1(\mu)$, this is
+a contradiction, hence $\mu(E) = 0$. Therefore we have that $\int_X|f_1|d\mu = \int_{X\setminus E}|f_1|d\mu + \int_E|f_1|d\mu = \int_{X\setminus E}|f_1|d\mu < \infty$.
+Hence the conclusion again follows by above.
+\\\\
+As seen above if ``$f_1\in L^1(\mu)$'' is omitted, the conclusion does not follow.  
 
 \subsection*{Exercise 8}
+Put $f_n = \chi_E$ if $n$ is odd, $f_n=1-\chi_E$ if $n$ is even. What is the relavance of this example to Fatou's Lemma ?
 \\\\
 \textbf{Solution:}
 
 \subsection*{Exercise 9}
+Suppose $\mu$ is a positive measure on $X, f: X \to [0,\infty]$ is measurable, $\int_X f d\mu = c$, where $0<c<\inf$,
+and $\alpha$ is a constant. Prove that
+\[ \lim_{n\to\infty} \int_X n \log [1+(f/n)^\alpha]\ d\mu = 
+    \begin{cases} 
+        \infty & \text{if} \ 0<\alpha<1\\
+        c & \text{if} \ \alpha = 1\\
+        0 & \text{if} \ 1<\alpha<\infty
+    \end{cases}
+\]
 \\\\
 \textbf{Solution:}
 
 \subsection*{Exercise 10}
+Suppose $\mu(X)<\infty$, $\{f_n\}$ is a sequence of bounded complex measurable functions on $X$,
+and $f_n \to f$ uniformly on $X$. Prove that
+\[ \lim_{n\to\infty} \int_X f_n \,d\mu  = \int_X f_n \,d\mu\]
+and show that the hypothesis ``$\mu(X) < \infty$'' cannot be omitted.
 \\\\
 \textbf{Solution:}
-
+Since we have a sequence of bounded complex measurable functions, we have that $|f_n(x)| \le g(x) $, where $g(x)$ is some bound.
+Since $\mu(X) < \infty$, then $\int_X |g(x)| < \infty$, hence $g(x) \in L^1(\mu)$.
+By uniform convergence, we also have that $f(x) = \lim_{n\to\infty} f_n(x)$. The conclusion then follows by LDCT.
+\\\\
+If ``$\mu(X) < \infty$'' is omitted, then we can have $\int_X |g(x)| = \infty$, and hence $g(x) \notin L^1(\mu)$ and hence LDCT does not apply,
+and the conclusion does not follow.
 \subsection*{Exercise 11}
+Show that
+\[ A = \bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty} E_k\]
+in Theorem 1.41, and hence prove the theorem without any reference to integration.
 \\\\
 \textbf{Solution:}
+If $x \in \bigcup_{k \in K} E_k$ then $x$ is in at least one of the $E_k$. If $x \in \bigcap_{k \in K} E_k$ then $x$ is in all of the $E_k$.
+Hence we can conclude that $\bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty} E_k$ are all the elements in either $E_n, E_{n+1}, E_{n+2}, ...$, without regard for the
+the size of $n$. Hence this must be the same as being part of infinitely many of the $E_k$.
+\\\\
+More formally, if $x$ is in infinitely many $E_k$, then for all $n=1,2,3,..., \infty \  \exists \, k> n: x\in E_k$.
+Hence $x \in \bigcup_{k=n}^{\infty} E_k$, however it is so for all $n$, hence it is in the interesection of all such unions,
+hence $x \in \bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty} E_k$. For the other direction, it is enough to show that if $x$ is not in
+infinitely many $E_k$ then $A \neq \bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty} E_k$. Hence, if $x$ is not in infinitely many $E_k$, 
+then there is some largest $k$ and hence $E_k$ in which $x$ lies.
+Therefore, $\exists \, n>k: x\notin \bigcup_{k=n}^{\infty} E_k$. Hence $x \notin \bigcap_{n=1}^{\infty}\bigcup_{k=n}^{\infty} E_k \quad \square$
+\\\\
+We let $F_n = \cup_{k=n}^{\infty} E_k$. From this it is obvious that $F_{n+1} \subset F_n$. 
+We then have that 
+\begin{equation*}
+    \begin{aligned}
+        \mu(A) &= \mu(\bigcap_{n=1}^{\infty}F_n)\\
+        &= \lim_{n\to\infty} \mu(F_n) \quad (\text{Theorem 1.19 (e)})\\
+        &= \lim_{n\to\infty} \mu(\bigcup_{k=n}^{\infty}E_k)\\
+        &\le \lim_{n\to\infty} \sum_{k=n}^{\infty} \mu(E_k) = 0\\
+    \end{aligned}
+\end{equation*}
+since we know that $\sum_{k=1}^{\infty}\mu(E_k) < \infty$, as well as the fact that the tail must go to 0 (Theorem 3.23, Principles of Mathematical Analysis; Rudin).
 
 \subsection*{Exercise 12}
+Suppose $f \in L^1(\mu)$. Prove that to each $\epsilon > 0$ there exists a $\delta>0$ such that $\int_E |f| \,d\mu < \epsilon$
+whenever $\mu(E) < \delta$.
 \\\\
 \textbf{Solution:}
-
+Since $f\in L^1(\mu)$ we know that $\int_E |f| \, d\mu$ is finite.
+By definition $\int_E |f| \, d\mu = \sup \sum_{i=1}^{\infty} \alpha_i \mu(A_i \cap E)$.
+In addition we know that $\mu(E) < \delta$. Therefore for each $\epsilon$ we can choose $\delta = \frac{\epsilon}{\sum_{i=1}^{n} \alpha_i}$.
+hence we have:
+\begin{equation*}
+    \begin{aligned}
+        \int_E |f| \, d\mu &= \sup \sum_{i=1}^{n} \alpha_i \mu(A_i \cap E)\\
+        &\le \sum_{i=1}^{n} \alpha_i \mu(A_i \cap E)\\
+        &\le \sum_{i=1}^{n} \alpha_i \mu(E)  = \mu(E) \sum_{i=1}^{n} \alpha_i = \delta \sum_{i=1}^{n} \alpha_i = \epsilon \\
+    \end{aligned}
+\end{equation*}
 \subsection*{Exercise 13}
+Show that proposition 1.24(c) is also true when $c = \infty$.
 \\\\
 \textbf{Solution:}
-
+If $f = 0$, then we have that $\int_E cf \,d\mu = \int_E \infty \cdot 0 \,d\mu = \int_E 0 \,d\mu = 0 = \infty \cdot 0 = \infty \cdot \int_E 0 \,d\mu =  c \int_E f \,d\mu$.
+\\\\
+If $f > 0$, we know that $\infty \cdot f = \infty \ \forall f>1$.
+Then we have that if $\mu(E) = 0$ then $\int_E cf \,d\mu = 0 =  c \int_E f \,d\mu$.
+If $\mu(E) \neq 0$, then $\int_E cf \,d\mu = \int_E \infty \cdot f \,d\mu = \int_E \infty \,d\mu = \infty = \infty \cdot \int_E f \,d\mu = c\int_E f \,d\mu$.
+test
 \end{document}
