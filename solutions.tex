@@ -256,4 +256,117 @@ If $f > 0$, we know that $\infty \cdot f = \infty \ \forall f>1$.
 Then we have that if $\mu(E) = 0$ then $\int_E cf \,d\mu = 0 =  c \int_E f \,d\mu$.
 If $\mu(E) \neq 0$, then $\int_E cf \,d\mu = \int_E \infty \cdot f \,d\mu = \int_E \infty \,d\mu = \infty = \infty \cdot \int_E f \,d\mu = c\int_E f \,d\mu$.
 test
+
+
+\section*{Chapter 2. Positive Borel Measures}
+\subsection*{Exercise 1}
+Let $\{f_n\}$ be a sequence of real nonnegative functions on $\mathbb{R}^1$, and consider the following four statements:
+\begin{enumerate}
+    \item[(a)]  If $f_1$ and $f_2$ are upper semicontinuous, then $f_1 + f_2$ is upper semicontinuous.
+    \item[(b)]  If $f_1$ and $f_2$ are lower semicontinuous, then $f_1 + f_2$ is lower semicontinuous.
+    \item[(c)]  If each $f_n$ is upper semicontinuous, then $ \sum_1^{\infty} f_n$ is upper semicontinuous.
+    \item[(d)]  If each $f_n$ is lower semicontinuous, then $ \sum_1^{\infty} f_n$ is lower semicontinuous.
+\end{enumerate}
+Show that three of these are true and that one is false. What happens when the word ``nonnegative'' is omitted? Is the truth of the
+statements affected? Is the truth of the statements affected if $\mathbb{R}^1$ is replaced by a general topological space?
+\\\\
+\textbf{Solution:}
+If $f_1(x)$ and $f_2(x)$ are upper semicontinuous, we work with the following set $\{ x: f_1(x) + f_2(x) < \alpha\}$, then:
+\begin{equation*}
+    \begin{aligned}
+        \{ x: f_1(x) + f_2(x) < \alpha\} &= \{ x: f_1(x) < \alpha - f_2(x) \}\\
+        &= \bigcup_{q \in \mathbb{Q}} (\{x:f_1(x) < q < \alpha - f_2(x)\})\\
+        &= \bigcup_{q \in \mathbb{Q}} (\{x:f_1(x) < q\} \cap \{x:f_2(x) < \alpha - q\})
+    \end{aligned}
+\end{equation*}
+In the last equality the two sets on the right are open, given their upper continuity. Then, the intersection of open sets are open, as well as their union.
+Hence we that $\{ x: f_1(x) + f_2(x) < \alpha\}$ is open, hence $f_1(x) + f_2(x)$ is upper semicontinuous.
+\\\\
+By similar argument, if $f_1(x)$ and $f_2(x)$ are lower semicontinuous, then:
+\begin{equation*}
+    \begin{aligned}
+        \{ x: f_1(x) + f_2(x) > \alpha\} &= \{ x: f_1(x) > \alpha - f_2(x) \}\\
+        &= \bigcup_{q \in \mathbb{Q}} (\{x:f_1(x) > q > \alpha - f_2(x)\})\\
+        &= \bigcup_{q \in \mathbb{Q}} (\{x:f_1(x) > q\} \cap \{x:f_2(x) > \alpha - q\})
+    \end{aligned}
+\end{equation*}
+is open, and hence $f_1(x)$ + $f_2(x)$ is lower semicontinuous.
+\\\\
+If each $f_n(x)$ is lower semicontinuous, then:
+\begin{equation*}
+    \begin{aligned}
+        \{ x: \sum_1^\infty f_n(x) > \alpha\} &= \{ x: \lim_{N\to\infty} \sum_{n=1}^N f_n(x) > \alpha \}\\
+        &= \{ x: \sup_{N \ge 1} \sum_{n=1}^N f_n(x) > \alpha \} \\
+    \end{aligned}
+\end{equation*}
+Previously, we have shown that a finite sum of lower semicontinuous functions is lower semicontinuous.
+By \textbf{Definition 2.8 (c)}, we have that supremum of any collection of lower semicontinuous functions is lower semicontinuous. Hence the we get that the above is lower semicontinuous.
+\\\\
+If each $f_n(x)$ is upper semicontinuous, then firstly let:
+\[ f_n = 
+    \begin{cases} 
+        1 & \text{if} \ x \ge \frac{1}{n}\\
+        0 & \text{if} \ x < \frac{1}{n}\\
+    \end{cases}
+\]
+Then we have that each $f_n$ is upper semicontinuous. However we have:
+\[ \sup_{n} f_n = 
+    \begin{cases} 
+        1 & \text{if} \ x > 0\\
+        0 & \text{if} \ x \le 0\\
+    \end{cases}
+\]
+which is not upper semicontinuous.
+Then by a similar argument as before we have:
+\begin{equation*}
+    \begin{aligned}
+        \{ x: \sum_1^\infty f_n(x) < \alpha\} &= \{ x: \lim_{N\to\infty} \sum_{n=1}^N f_n(x) < \alpha \}\\
+        &= \{ x: \sup_{N \ge 1} \sum_{n=1}^N f_n(x) < \alpha \} \\
+    \end{aligned}
+\end{equation*}
+Again we know that a finite sum of upper semicontinuous functions is upper semicontinuous.
+However we have just shown that for our $f_n$ the supremum is not necessarily upper semicontinuous.
+Hence the the implication does not follow.
+\\\\
+\subsection*{Exercise 2}
+Let $f$ be an arbitrary complex function on $\mathbb{R}^1$, and define
+\begin{equation*}
+    \begin{aligned}
+        \phi(x, \delta) &= \sup \{ |f(s)-f(t)|:s,t \in (x-\delta, x+\delta) \}, \\
+        \phi(x) &= \inf \{ \phi(x, \delta): \delta > 0 \} \\
+    \end{aligned}
+\end{equation*}
+Prove that $\phi$ is upper semicontinuous, that $f$ is continuous at a point $x$ if and only if
+$\phi(x)=0$, and hence that the set of points of continuity of an arbitrary complex function
+is a $G_\delta$. Formulate and prove an analogous statement for general topological spaces
+in place of $\mathbb{R}^1$.
+\\\\
+\textbf{Solution:}
+We choose arbitrary $x_a \in \mathbb{R}$. By the second equation we then let $y > \phi(x_a)$.
+Hence there must be a $\delta_a >0: \phi(x_a, \delta_a)<y$.
+We then let $x \in (x_a-\frac{\delta_a}{2}, x_a+\frac{\delta_a}{2})$ and $s,t \in (x-\frac{\delta_a}{2}, x+ \frac{\delta_a}{2})$.
+Hence we must have that $(x-\frac{\delta_a}{2}, x+\frac{\delta_a}{2}) \subseteq (x_a-\delta_a,x_a+\delta_a)$, since
+$x_a - \delta_a < x-\frac{\delta_a}{2} < x+\frac{\delta_a}{2} < x_a+\delta_a$.
+Hence $\phi(x, \frac{\delta_a}{2}) \le \phi(x_a, \delta_a) < y$ (due to supremums).
+Hence for any $\delta$, we have that $\inf\{\phi(x,\delta):\delta>0\} \le \phi(x_a, \delta_a) < y$.
+Hence we have that $\forall x \in (x_a-\frac{\delta_a}{2}, x_a+\frac{\delta_a}{2}), \ \phi(x) < y$.
+Notice that $x_a$ and $y$ were arbitrary.
+Hence $\phi$ is upper semicontinuous.
+\\\\
+\subsection*{Exercise 3}
+Let $X$ be a metric space, with metric $\rho$.
+For any nonempty $E\subset X$, define
+\[
+    \rho_E(x) = inf\{ \rho(x,y): y\in E \}
+\]
+Show that $\rho_E$ is a uniformly continuous function on $X$. If $A$ and $B$ are disjoint nonempty closed
+subsets of $X$, examine the relevance of the function
+\[
+    f(x) = \frac{\rho_A(x)}{\rho_A(x)+\rho_B(x)}
+\]
+to Urysohn's lemma.
+\\\\
+\textbf{Solution:}
+By definition, $\rho_E$ is uniformly continuous on $X$ if for every $\epsilon>0$ there exists $\delta>0$
+such that $\rho_E(f(p), f(q)) < \epsilon$ for all $p,q \in X$ for which $\rho_X(p,q) < \delta$.
 \end{document}
