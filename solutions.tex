@@ -327,7 +327,6 @@ Then by a similar argument as before we have:
 Again we know that a finite sum of upper semicontinuous functions is upper semicontinuous.
 However we have just shown that for our $f_n$ the supremum is not necessarily upper semicontinuous.
 Hence the the implication does not follow.
-\\\\
 \subsection*{Exercise 2}
 Let $f$ be an arbitrary complex function on $\mathbb{R}^1$, and define
 \begin{equation*}
@@ -367,6 +366,56 @@ subsets of $X$, examine the relevance of the function
 to Urysohn's lemma.
 \\\\
 \textbf{Solution:}
-By definition, $\rho_E$ is uniformly continuous on $X$ if for every $\epsilon>0$ there exists $\delta>0$
-such that $\rho_E(f(p), f(q)) < \epsilon$ for all $p,q \in X$ for which $\rho_X(p,q) < \delta$.
+We know from the definiton that $\forall y\in E, x,z \in X$
+\[ \rho_E(x) \le \rho(x,y) \le \rho(x,z) + \rho(z,y) \]
+\[ \rho_E(z) \le \rho(z,y) \le \rho(z,x) + \rho(x,y) \]
+Hence we get that $\rho_E(x) \le \rho(x,z) + \rho_E(z)$ and $\rho_E(z) \le \rho(z,x) + \rho_E(y)$.
+Hence $\rho_E(x) - \rho_E(z) \le \rho(x,z)$ and $\rho_E(z) - \rho_E(x) \le \rho(x,z)$.
+\\\\
+Hence $\forall x,z \in X \ |\rho_E(z) - \rho_E(x)| \le \rho(x,z)$, and we have uniform continuity.
+\\\\
+Since the $A$ and $B$ are closed and disjoint, the function shown is a mapping to the closed interval.
+We have that $f: X \rightarrow [0,1]$. Since $f(x) = 1 \ \forall x \in B$ and $f(x) \neq 0 \ \forall x \in A^C$, meaning its support lies in $A^C$, by Urysohn's Lemma, we have that if $B$ is compact
+then $B \prec f \prec A^C$.
+
+\subsection*{Exercise 4}
+Examine the proof of the Reisz representation theorem and prove the following two statements:
+
+\begin{enumerate}
+    \item[(a)]  If $E_1 \subset V_1$ and $E_2 \subset V_2$, where $V_1$ and $V_2$ are disjoint open sets,
+                then $\mu(E_1 \cup E_2) = \mu(E_1) + \mu(E_2)$, even if $E_1$ and $E_2$ are not in $\mathfrak{M}$.
+    \item[(b)]  If $E \in \mathfrak{M}_F$, then $E = N \cup K_1 \cup K_2 \cup ...$, where $\{K_i\}$ is a disjoint countable
+                collection of compact sets and $\mu(N) = 0$.
+\end{enumerate}
+\\\\
+\textbf{Solution:}
+\\\\
+(a) Let $U$ be an open cover of $V_1$ and $V_2$.
+Hence we have, $\mu(U) \ge \mu(U \cap (V_1 \cup V_2)) \ge \mu(U \cap V_1) + \mu(U \cap V_2) \ge \mu(E_1) +  \mu(E_2)$.
+\\\\
+Then we take the infimum, yielding
+\begin{equation*}
+    \begin{aligned}
+        \inf_{E_1\cup E_2 \subset U, U open} \mu(U) & \ge  \inf_{E_1\cup E_2 \subset U, U open} (\mu(E_1) +  \mu(E_2))\\
+        \inf_{E_1\cup E_2 \subset U, U open} \mu(U) & \ge \mu(E_1) +  \mu(E_2)\\
+        \mu(E_1 \cup E_2) & \ge \mu(E_1) +  \mu(E_2)
+    \end{aligned}
+\end{equation*}
+Also we have by subadditivity that $\mu(E_1 \cup E_2) \le \mu(E_1) + \mu(E_2)$.
+Hence $\mu(E_1 \cup E_2) = \mu(E_1) + \mu(E_2)$.
+\\\\
+(b) We let $E_0 = E$. From the proof, we have that $K_1 \subset E_0 \subset V_1$, where $K_1$ is compact
+and $V_1$ is open, and $\mu(V_1 - K_1)<\epsilon$. Hence we have that $K_1 \in \mathfrak{M}_F$. Again by the proof, we have that $E_1 - K_1 \in \mathfrak{M}_F$.
+Then, let $E_1 = E_0-K_1$, and similarly we have $K_2 \subset E_1 \subset V_2$... Hence we can always find
+$K_n \subset E_{n-1}\subset V_n$, where $K_n$ is compact and $V_n$ is open, and $\mu(V_n - K_n)<\epsilon$. Also, $K_n, (E_{n-1}-K_{n}) \in \mathfrak{M}_F$.
+We let $\epsilon = \frac{1}{n}$ and $E_n = E_{n-1} - K_n$. We also let $N = E - \cup_{n=1}^{\infty}K_n$, where $N\in \mathfrak{M}_F$.
+We have that $N \subseteq E_n$, hence $\mu(N) \le \mu(E_n) = \mu(E_{n-1} - K_n) \le \mu(V_n - K_n) < \frac{1}{n}$.
+Taking the limit, we have $\mu(N) = 0$. And from before we have, $E = N \cup (\cup_{n=1}^{\infty}K_n)$.
+
+\subsection*{Exercise 5}
+Let $E$ be Cantor's familiar ``middle thirds'' set.
+Show that $m(E)=0$, even though $E$ and $R^1$ have the same cardinality.
+\\\\
+\textbf{Solution:}
+
 \end{document}
